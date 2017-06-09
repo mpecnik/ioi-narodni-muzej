@@ -1,10 +1,10 @@
-*Narodni muzej - Metalografski mikroskop*
+# Narodni muzej - Metalografski mikroskop
 
-**Avtorstvo**
+## Avtorstvo
 Matej Pečnik, Rok Plevel <br />
 Igra je nastala v okviru predmeta Interaktivnost in oblikovanje informacij na Fakulteti za računalništvo in informatiko (Univerza v Ljubljani) pod mentorstvom prof. dr. Franca Soline in viš. pred. dr. Boruta Batagelja.
 
-**Opis igre**
+## Opis igre
 S pomočjo računalniške igre, ki kaže pogled pod metalografskim mikroskopom, obiskovalec določuje vrsto kaljenega jekla tako, da si ogleda povečave različnih vzorcev in jih primerja s tabelo povečav.
 
 Igra je sestavljena iz šestih delov:
@@ -25,5 +25,5 @@ Nato je potrebno pripravljen vzorec analizirati pod metalografskim mikroskopom. 
 
 Zadnji korak je enostavna naloga, kjer mora obiskovalec izbrati ustrezno kovino, ki jo je pravkar analiziral. Maskota Žive mu da jasno vedeti, ko je odgovoril narobe oziroma prav. Na voljo ima poljubno število poskusov, lahko pa se vrne tudi nazaj na ponovno analizo.
 
-**Zagon igre**
+## Zagon igre
 Igro poženemo s pritiskom na datoteko "index.html".
