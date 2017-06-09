@@ -12,11 +12,6 @@ $(document).ready(function(){
 
     });
 
-    if(localStorage.getItem("lang")){
-        $(".btn-" + localStorage.getItem("lang")).click();
-    }else{
-        $(".btn-en").click();
-    }
     $(this).on("click mousemove mousedown keypress touchstart", resetTimer);
     resetTimer();
 });
