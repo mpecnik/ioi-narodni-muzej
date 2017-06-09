@@ -1,5 +1,5 @@
 # Narodni muzej - Metalografski mikroskop
-[a link](https://github.com/mpecnik/ioi-narodni-muzej)
+[Igra metalografski mikroskop](https://github.com/mpecnik/ioi-narodni-muzej)
 
 ## Avtorstvo
 Matej Pečnik, Rok Plevel <br />
