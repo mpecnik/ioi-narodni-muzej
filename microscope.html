@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<title></title>
+		<!-- Bootstrap core CSS -->
+		<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+		<!-- Custom styles for this template -->
+		<link href="css/style.css" rel="stylesheet">
+
+		<link href="css/jfMagnify.css" rel="stylesheet" type="text/css" />
+	<script src="js/jquery-2.2.0.min.js"></script>
+	<script type="text/javascript" src="js/jquery-ui.js"></script>
+	<script src="js/jquery.ui.touch-punch.min.js"></script>
+	<script type="text/javascript" src="js/jquery.jfMagnify.js"></script>
+	</head>
+	<body class="lang-en">
+		<!-- AUTHOR MODAL-->
+		<!-- Modal -->
+		<div class="modal fade" id="helpModal" tabindex="-1" role="dialog" aria-hidden="true">
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel"></h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body"></div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal"></button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Navigation -->
+		<nav class="navbar navbar-fixed-top navbar-inverse">
+			<div class="container">
+				<div class="header-left">
+					<h3></h3>
+				</div>
+				<div class="header-right">
+					<a id="again" class="btn" href="index.html"></a>
+					<div class="dropdown">
+					  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><div id="lng" style="float:left;"></div>&nbsp;
+					  <span class="caret"></span></button>
+					  <ul class="dropdown-menu">
+					    <li><a class="lang">SLO</a></li>
+					    <li><a class="lang">ENG</a></li>
+					  </ul>
+					</div>
+					<a id="help" class="btn" data-toggle="modal" data-target="#helpModal"><i class="fa fa-question" aria-hidden="true"></i></a>
+				</div>
+			</div>
+		</nav>
+		<!-- Page Content -->
+		<div id="window" class="magnify m-bg">
+			<img class="hand swipe" src="images/hand_swipe.png"/>
+			<div class="magnify_glass"></div>
+			<div class = "element_to_magnify" id="mag_element">
+				<img id="image" src="images/5_top_microscope.jpg"/>
+				<img id="zoom1" src="images/6_aluminij_200.jpg" style="display: none;"/>
+
+			</div>
+			<a href="#"><div class="selected_len lens left" value="1"><div><h1>200 &micro;m</h1></div></div></a>
+			<a href="#"><div class="lens" value="2"><div style=""><h1>100 &micro;m</h1></div></div></a>
+			<a href="#"><div class="lens right" value="3"><div><h1>20 &micro;m</h1></div></div></a>
+			<div class="showSamples">
+				<a href="result.html" class="btn btn-main sidBtn"></a>
+			</div>
+		</div>
+	</div>
+	<footer>
+		<nav class="navbar navbar-fixed-bottom">
+			<div class="container text-right">
+				<text>Matej Pečnik, Rok Plevel - Copyright @ 2017</text>
+			</div>
+		</nav>
+	</footer>
+	<!-- Bootstrap core JavaScript -->
+	<script src="vendor/tether/tether.min.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="js/script.js"></script>
+	<script src="js/language.js"></script>
+	<script type="text/javascript">
+
+		var material = ["aluminij", "medenina", "ferit"];
+		var sid = QueryString().sid;
+
+		$(document).ready(function() {
+			$(".element_to_magnify img").draggable();
+			$(".magnify").jfMagnify();
+			$("#image").attr("src", "images/"+QueryString().sid+"_" + material[sid-6] + "_200.jpg");
+			$("#zoom1").attr("src", "images/"+QueryString().sid+"_" + material[sid-6] + "_200.jpg");
+		});
+
+
+		$("#image").on("drag", function() {
+				var styleSettings = $(".ui-draggable-dragging").attr("style").split(";");
+
+				for (i = 0; i < styleSettings.length - 1; i++) {
+				    var setting = styleSettings[i].replace(" ", "").replace(" ", "").split(":");
+				    $("#zoom1").css(setting[0], setting[1]);
+				}
+				$("#zoom1").css("display", "inline");
+				$("#image").attr("src", "images/background.svg");
+		});
+
+		$("a .lens").on("click", function(e) {
+			e.preventDefault();
+			var num = $(this).attr("value");
+			var material = ["aluminij", "medenina", "ferit"]
+			$("a .lens").removeClass("selected_len");
+			$(this).addClass("selected_len");
+
+			switch (num) {
+			    case "1":
+			        $("#zoom1").attr("src", "images/"+QueryString().sid+"_" + material[sid-6] + "_200.jpg");
+			        break;
+			    case "2":
+			        $("#zoom1").attr("src", "images/"+QueryString().sid+"_" + material[sid-6] + "_100.jpg");
+			        break;
+			    case "3":
+			        $("#zoom1").attr("src", "images/"+QueryString().sid+"_" + material[sid-6] + "_20.jpg");
+			        break;
+			} 
+			$("#zoom1").css("display", "inline");
+
+			//$(".magnify").data("jfMagnify").scaleMe(opacity * 3 + ((opacity * 3) % 2));
+		});
+	</script>
+</body>
+</html>
